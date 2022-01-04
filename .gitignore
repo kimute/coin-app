@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+App_circle.tsx
+App_event.tsx
+Circle.tsx
+Coin_bcup.tsx
+coins_bcup.tsx
