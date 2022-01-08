@@ -5,7 +5,7 @@ import Coin from "./routes/Coin";
 interface IrouterProps {}
 
 function Router({}:IrouterProps){
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route path="/:coinId">
                 <Coin/>

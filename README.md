@@ -2,6 +2,14 @@
 
 React with Typescript
 
+Published:
+https://kimute.github.io/coin-app/
+
+Funtions:
+
+- SWITCH: dark/light mode
+- show coin info(prix, chart, etc)
+
 # Using:
 
 - styled Components
