@@ -1,7 +1,11 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { useState } from "react";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Router from "./Router";
+import { darkTheme, lightTheme } from "./theme";
+import Button from '@material-ui/core/Button';
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 //use style global
 const GlobalStyle = createGlobalStyle`
@@ -68,11 +72,16 @@ a {
 `;
 
 function App() {
+  const isDark = useRecoilValue(isDarkAtom)
+  //const [isDark, setDark] = useState(false);
+  //const toggleDark = () => setDark((current) => !current)
   return (
      <>
+      <ThemeProvider theme={isDark ? darkTheme :lightTheme}>
         <GlobalStyle />
-        <Router />
+        <Router/>
         <ReactQueryDevtools initialIsOpen={true}/>
+      </ThemeProvider>  
       </>
   );
 

@@ -5,6 +5,9 @@ import { useQuery } from "react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchCoins, fetchCoinTickers } from "../api";
 import { Helmet } from "react-helmet";
+import { Button } from "@material-ui/core";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
    padding: 0px 20px;
@@ -19,7 +22,11 @@ const Header = styled.header`
    justify-content: center;
    aligin-items: center;
 `;
+const Btn = styled.div`
+position: absolute;
+margin-left: 50vh;
 
+`;
 const Title = styled.h1`
    margin-top:10px;
    font-size:48px;
@@ -31,13 +38,14 @@ const CoinList = styled.ul`
 `;
 
 const Coin = styled.li`
-   background-color:white;
+   background-color:${(props) => props.theme.cardBgColor};
    display:flex;
    justify-content:space-between;
    padding:10px;
-   color:${props =>props.theme.bgColor};
+   color:${props => props.theme.textColor};
    margin-bottom: 10px;
    border-radius: 15px;
+   border: 1px solid white;
 
    a {
        display: flex;
@@ -81,8 +89,12 @@ const MiniChart = styled.span`
 
 `;
 
+interface IcoinProps {}
 
-function Coins() {
+
+function Coins({}:IcoinProps) {
+    const setDarkAtom = useSetRecoilState(isDarkAtom)
+    const toggleDark = () => setDarkAtom((prev) => !prev);
      //1:uniq name 1:func. name
     const {isLoading, data} = useQuery<ICoin[]>("allCoins", fetchCoins)
     /*
@@ -105,6 +117,10 @@ function Coins() {
             </Helmet>
             <Header>
                 <Title>Coins</Title>
+                <Btn>
+                <Button onClick={toggleDark}>Switch</Button>
+                </Btn>
+                
             </Header>
             {isLoading ? <Loader>Loding...</Loader>:(<CoinList>
                 {data?.slice(0, 100).map(coin =>(

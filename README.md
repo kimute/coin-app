@@ -9,6 +9,7 @@ React with Typescript
 - React Router DOM
 - Apex Charts
 - Typescript
+- Recoli
 
 # API:
 

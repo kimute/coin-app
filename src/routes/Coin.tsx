@@ -149,8 +149,9 @@ interface PriceData {
       };
     };
   }
+interface IcoinProps {}
 
-function Coin() {
+function Coin({}:IcoinProps) {
     const {coinId} = useParams<RouteParams>();
     const {state} =useLocation<RouteState>();
     const priceMatch = useRouteMatch("/:coinId/price");
@@ -237,8 +238,6 @@ function Coin() {
                         <Link to={`/${coinId}/price`}>Price</Link>
                     </Tab>
                 </Tabs>
-                
-                
                 <Switch>
                     <Route path={`/:coinId/price`}>
                         <Price coinId={coinId}/>
