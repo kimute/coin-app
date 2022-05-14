@@ -36,7 +36,7 @@ const Header = styled.header`
 
 const Title = styled.h1`
    font-size:48px;
-   color:${props => props.theme.accentColor}
+   color:${props => props.theme.accentColor};
 `;
 
 const Loader = styled.span`
@@ -158,11 +158,10 @@ function Coin({}:IcoinProps) {
     const chartMatch = useRouteMatch("/:coinId/chart");
     const {isLoading: infoLoading, data: InfoData} = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
     const {isLoading: tickersLoading, data: tickersData} = useQuery<PriceData>(["tickers", coinId], () => fetchCoinTickers(coinId))
-    
-    //const params = useParams();
-    //console.log(params);
-    
-    /*const [info, setInfo] = useState<InfoData>();
+    /*
+    const params = useParams();
+    console.log(params);
+    const [info, setInfo] = useState<InfoData>();
     const [priceinfo, setPriceInfo] = useState<PriceData>();
     const [loading, setLoading] = useState(true);
     
@@ -181,7 +180,8 @@ function Coin({}:IcoinProps) {
            setPriceInfo(priceData);
            setLoading(false);
         })();
-    },[coinId]);*/
+    },[coinId]);
+    */
     const loading = infoLoading || tickersLoading;
     
     return (

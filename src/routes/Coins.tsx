@@ -20,7 +20,7 @@ const Header = styled.header`
    height: 15vh;
    display: flex;
    justify-content: center;
-   aligin-items: center;
+   align-items: center;
 `;
 const Btn = styled.div`
 position: absolute;
@@ -30,7 +30,7 @@ margin-left: 50vh;
 const Title = styled.h1`
    margin-top:10px;
    font-size:48px;
-   color:${props => props.theme.accentColor}
+   color:${props => props.theme.accentColor};
 `;
 
 const CoinList = styled.ul`
@@ -85,8 +85,6 @@ const MiniChart = styled.span`
    text-align: center;
    display:block;
    font-size:28px;
-   
-
 `;
 
 interface IcoinProps {}
@@ -105,7 +103,7 @@ function Coins({}:IcoinProps) {
         (async() =>{
             const response = await fetch("https://api.coinpaprika.com/v1/coins");
             const json = await response.json();
-            setCoins(json.slice(0,100));
+             (json.slice(0,100));
             setLoding(false);
         })();
     }, []);*/
@@ -129,7 +127,7 @@ function Coins({}:IcoinProps) {
                         pathname:`/${coin.id}`,
                         state: {name:coin.name}
                     }}>
-                        <Img src={`https://cryptoicon-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}/>
+                        <Img src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}/>
                         {coin.name}
                     </Link>
                     <MiniChart>
